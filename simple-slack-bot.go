@@ -32,6 +32,7 @@ func run(api *slack.Client) int {
 }
 
 func main() {
-	api := slack.New("xoxb-1002921805558-1204427402230-HPsb2iD93hwUI4dljf2TTGEN")
+	slackKey := os.Getenv("SLACK_SECRET_KEY")
+	api := slack.New(slackKey)
 	os.Exit(run(api))
 }
