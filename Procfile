@@ -1,1 +1,1 @@
-web: simple-slack-bot
+web: bin/simple-slack-bot
