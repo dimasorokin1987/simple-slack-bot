@@ -8,6 +8,9 @@ import (
 )
 
 func run(api *slack.Client) int {
+	log.Print("PORT"+os.Getenv("PORT"))
+
+
 	rtm := api.NewRTM()
 	go rtm.ManageConnection()
 
