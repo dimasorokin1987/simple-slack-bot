@@ -65,7 +65,8 @@ func run(api *slack.Client) int {
 
 func main() {
   slackKey := os.Getenv("SLACK_SECRET_KEY")
-  url := fmt.Sprintf("https://slack.com/api/rtm.start?token=%s", slackKey)
+  //url := fmt.Sprintf("https://slack.com/api/rtm.start?token=%s", slackKey)
+  url := fmt.Sprintf("https://slack.com/api/rtm.connect?token=%s", slackKey)
   resp, err := http.Get(url)
   if err != nil {
     log.Fatalln("Fail to get ws url")
