@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"os"
-
+	"fmt"
 	"golang.org/x/net/websocket"
 )
 
@@ -60,7 +60,7 @@ func run(api *slack.Client) int {
 */
 
 func main() {
-	slackKey := os.Getenv("SLACK_SECRET_KEY")
+  slackKey := os.Getenv("SLACK_SECRET_KEY")
   url := fmt.Sprintf("https://slack.com/api/rtm.start?token=%s", slackKey)
   resp, err := http.Get(url)
   if err != nil {
