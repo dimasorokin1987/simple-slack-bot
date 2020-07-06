@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"sync/atomic"
 	"golang.org/x/net/websocket"
+	"encoding/json"
 )
 
 type responseSelf struct {
@@ -68,31 +69,31 @@ func main() {
   resp, err := http.Get(url)
   if err != nil {
     log.Fatalln("Fail to get ws url")
-    return 1
+    return
   }
   body, err := ioutil.ReadAll(resp.Body)
   if err != nil {
     log.Fatalln("Fail to read get ws url response body")
-    return 1
+    return
   }
   err = json.Unmarshal(body, &respObj)
   if err != nil {
     log.Fatalln("Fail to parse json get ws url response")
-    return 1
+    return
   }
   if !respObj.Ok {
-		err = log.Fatalln("Slack error: %s", respObj.Error)
-		return
-	}
+    err = log.Fatalln("Slack error: %s", respObj.Error)
+    return
+  }
   
   wsurl := respObj.Url
-	id := respObj.Self.Id
+  id := respObj.Self.Id
   log.Printf("wsurl: %s, id: %s", wsurl, id)
   
   ws, err := websocket.Dial(wsurl, "", "https://api.slack.com/")
   if err != nil {
     log.Fatalln("Fail to dial websocket")
-    return 1
+    return
   }
   
   
