@@ -104,7 +104,7 @@ func main() {
       return
     }
     m.Id = atomic.AddUint64(&counter, 1)
-    err := websocket.JSON.Send(ws, m)
+    err = websocket.JSON.Send(ws, m)
     if err != nil {
       log.Fatalln("Fail to send message")
       return
