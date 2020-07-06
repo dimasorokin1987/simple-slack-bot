@@ -99,8 +99,16 @@ func main() {
   
   for {
     err := websocket.JSON.Receive(ws, &m)
+    if err != nil {
+      log.Fatalln("Fail to recieve message")
+      return
+    }
     m.Id = atomic.AddUint64(&counter, 1)
     err := websocket.JSON.Send(ws, m)
+    if err != nil {
+      log.Fatalln("Fail to send message")
+      return
+    }
   }
   
 	//api := slack.New(slackKey)
