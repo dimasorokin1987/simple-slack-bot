@@ -82,7 +82,7 @@ func main() {
     return
   }
   if !respObj.Ok {
-    err = log.Fatalln("Slack error: %s", respObj.Error)
+    log.Fatalln("Slack error: %s", respObj.Error)
     return
   }
   
