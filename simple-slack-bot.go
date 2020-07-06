@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"fmt"
+	"io/ioutil"
 	"golang.org/x/net/websocket"
 )
 
