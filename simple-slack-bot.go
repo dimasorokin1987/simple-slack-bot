@@ -65,7 +65,7 @@ func run(api *slack.Client) int {
 
 func main() {
   port := os.Getenv("PORT")
-  log.Printf("port: %s")
+  log.Printf("port: %d", port)
   slackKey := os.Getenv("SLACK_SECRET_KEY")
   //url := fmt.Sprintf("https://slack.com/api/rtm.start?token=%s", slackKey)
   url := fmt.Sprintf("https://slack.com/api/rtm.connect?token=%s", slackKey)
