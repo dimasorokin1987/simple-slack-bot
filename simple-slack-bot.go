@@ -114,6 +114,7 @@ func main() {
     err := websocket.JSON.Receive(ws, &m)
     if err != nil {
       log.Fatalln("Fail to recieve message")
+      log.Fatalln(err)
       return
     }
     m.Id = atomic.AddUint64(&counter, 1)
