@@ -98,7 +98,17 @@ func main() {
     log.Fatalln("Fail to dial websocket")
     return
   }
-  
+  defer ws.Close()
+
+  m.Id=1
+  m.Type="message"
+  m.Channel="#general"
+  m.Text="test"
+  err = websocket.JSON.Send(ws, m)
+  if err != nil {
+    log.Fatalln("Fail to send first message")
+    return
+  }
   
   for {
     err := websocket.JSON.Receive(ws, &m)
