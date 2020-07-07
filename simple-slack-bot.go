@@ -101,7 +101,7 @@ func main() {
   defer ws.Close()
 
   m.Id=1
-  m.Type="message"
+  m.Type="hello"
   m.Channel="#general"
   m.Text="test"
   err = websocket.JSON.Send(ws, m)
